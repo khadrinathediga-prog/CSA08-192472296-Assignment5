@@ -2,41 +2,66 @@
 
 ## Student Details
 
-- **Name:** Khadrinath Gowd
-- **Register Number:** 192472296
-- **Course:** B.Tech – CSE (AI)
-- **Python Version:** 3.13.9
-- **GitHub Username:** khadrinathediga-prog
+| Field | Details |
+|---|---|
+| Student Name | Khadrinath Gowd |
+| Register Number | 192472296 |
+| Course | B.Tech – CSE (AI) |
+| Assignment | Python Programming Assignment 5 |
+| Course Outcome | CO5 |
+| Python Version | 3.13.9 |
 
 ## Project Title
 
-**City Air Quality Monitoring Network – Data Processing and Analysis**
+**City Air Quality Monitoring Network – Data Processing, Analysis, Performance Evaluation and AI Application Design**
 
-## Project Description
+## Project Overview
 
-This project focuses on collecting, cleaning, analysing, and processing air-quality data from multiple monitoring stations.
+This project develops a data-processing and analysis solution for a city air-quality monitoring network containing 12 monitoring stations.
 
-The dataset contains PM2.5, PM10, NO2, temperature, date, and hourly readings.
+The system handles daily air-quality readings such as PM2.5, PM10, NO2 and temperature. It addresses missing values, duplicate records, invalid measurements, inconsistent temperature units and citizen complaints.
 
-The project uses Python, CSV, Pandas, SQLite, and Matplotlib to perform data processing, database operations, performance comparisons, and visualisation.
+The assignment also investigates Python CSV processing, Pandas, SQLite database operations, performance profiling, sentiment analysis and AI application design.
 
-## Project Folder Structure
+## Technologies and Libraries
+
+| Technology | Version / Details |
+|---|---|
+| Python | 3.13.9 |
+| Pandas | 2.3.3 |
+| Matplotlib | 3.10.9 |
+| SQLite | Python built-in sqlite3 |
+| CSV | Python built-in csv module |
+| cProfile | Python built-in profiler |
+| timeit / perf_counter | Python built-in timing tools |
+
+## Project Structure
 
 ```text
 CSA08-192472296-Assignment5/
 │
-├── generate_data.py
 ├── README.md
+├── .gitignore
+├── generate_data.py
 │
 ├── Task01_A1/
+│   └── data_acquisition.md
+│
 ├── Task02_A2/
+│   └── data_cleaning.md
+│
 ├── Task03_A3/
+│   └── data_analysis.md
+│
 ├── Task04_A4/
+│   └── debugging_profiling.md
+│
 ├── Task05_A5/
+│   └── ai_application_design.md
+│
 ├── Task06_B1/
 │   ├── input/
 │   ├── output/
-│   │   └── charts/
 │   ├── screenshots/
 │   ├── cleaning_pipeline.py
 │   ├── database_analysis.py
@@ -44,98 +69,227 @@ CSA08-192472296-Assignment5/
 │   └── pandas_comparison.py
 │
 ├── Task07_B2/
+│   ├── input/
+│   ├── screenshots/
+│   ├── adversarial_tests.py
+│   ├── sentiment_analysis.py
+│   └── parameterized_sql.py
+│
 ├── Task08_B3/
+│   ├── input/
+│   ├── screenshots/
+│   ├── performance_comparison.py
+│   └── profiling.py
+│
 └── Task09_B4/
+    ├── output/
+    ├── screenshots/
+    ├── final_engineering.py
+    └── engineering_decision.md
 ```
 
-## Software and Libraries
+## Part A – Data and Program Design
 
-- Python 3.13.9
-- CSV
-- SQLite3
-- Pandas
-- Matplotlib
-- Statistics
-- pathlib
-- time
+### A1 – Data Acquisition
+- Studied CSV, SQL and Pandas data acquisition methods.
+- Designed the air-quality data acquisition process.
+- Included algorithmic complexity and pseudocode.
 
-## Task B1 – Implementation and Results
+### A2 – Data Cleaning and Normalisation
+- Identified missing and invalid values.
+- Removed duplicate records.
+- Converted Fahrenheit temperatures into Celsius.
+- Applied forward filling and median replacement.
+- Included normalisation methods and pseudocode.
 
-### 1. Data Cleaning
+### A3 – Data Analysis and Visualisation
+- Analysed station-wise air-quality readings.
+- Designed SQL aggregation queries.
+- Studied data visualisation methods.
+- Included pseudocode and complexity analysis.
 
-Implemented a Python cleaning pipeline to handle:
+### A4 – Debugging and Profiling
+- Studied print debugging, assertions, logging and Python debugger.
+- Used execution-time measurement and profiling concepts.
+- Included pseudocode and debugging strategies.
 
-- Missing values
-- Negative and impossible readings
-- Duplicate records
-- Fahrenheit-to-Celsius conversion
-- Missing-value replacement using forward fill and median
+### A5 – AI Application Design
+- Designed sentiment analysis for citizen complaints.
+- Proposed extractive text summarisation.
+- Designed a rule-based air-quality chatbot.
+- Compared rule-based and machine-learning approaches.
 
-### 2. SQLite Database
+## Part B – Implementation and Experimental Investigation
 
-Created an SQLite database and inserted cleaned records using `executemany()`.
+### B1 – Cleaning Pipeline and Database Analysis
 
-Implemented three SQL queries:
+Implemented:
+- CSV data cleaning and validation.
+- Duplicate removal and missing-value handling.
+- Temperature unit conversion.
+- SQLite database insertion using `executemany()`.
+- SQL aggregation queries.
+- Four data visualisations.
+- Python CSV versus Pandas comparison.
 
-1. Average PM2.5 by station.
-2. Maximum PM10 by station.
-3. Total readings by station.
+**Cleaning result:**
+- Cleaned records: 7
+- Duplicate records removed: 1
+- Invalid measurements handled through validation and replacement.
 
-### 3. Data Visualisation
+### B2 – Adversarial Data and SQL Security
 
-Generated four charts:
+Implemented:
+- Missing-column CSV testing.
+- Wrong-delimiter testing.
+- Different-encoding testing.
+- Empty-file testing.
+- SQL injection testing.
+- Parameterised SQL queries.
+- `executemany()` database insertion.
+- Rule-based sentiment analysis with negation handling.
 
-- Station-wise PM2.5 comparison
-- Monthly PM2.5 trend
-- Temperature vs PM2.5 scatter plot
-- PM2.5 distribution histogram
+The SQL injection test demonstrated the difference between unsafe query construction and parameterised queries.
 
-### 4. Python CSV vs Pandas
+### B3 – Performance Comparison and Profiling
 
-Compared Python CSV processing with Pandas groupby operations.
+Compared three approaches:
 
-Both methods produced identical average PM2.5 results.
+1. Python CSV processing.
+2. Pandas groupby.
+3. SQLite GROUP BY.
 
-| Station | Average PM2.5 |
-|---|---:|
-| Adyar | 48.0 |
-| Guindy | 95.0 |
+Datasets contained 1, 12 and 120 monitoring stations, with 8,760 readings per station.
 
-Execution time on the small test dataset:
+**Observed benchmark results from one execution:**
 
-- Python CSV: 0.000269 seconds
-- Pandas: 0.004219 seconds
+| Stations | Python CSV | Pandas | SQLite |
+|---:|---:|---:|---:|
+| 1 | 0.0175 s | 0.0160 s | 0.0278 s |
+| 12 | 0.2042 s | 0.0670 s | 0.3073 s |
+| 120 | 2.0605 s | 0.6372 s | 3.1954 s |
 
-### 5. Invalid Data Testing
+Pandas performed fastest in these particular tests. Actual execution times may vary depending on hardware and system load.
 
-Tested an impossible PM2.5 reading of 1200.
+Python cProfile was used to identify time-consuming functions.
 
-The cleaning pipeline rejected the invalid measurement and replaced it with a valid value while retaining the record.
+### B4 – Final Engineering Decision
 
-### Final B1 Database Results
+Implemented:
+- Sentiment analysis of 50 citizen complaints.
+- Comparison against predefined manual labels.
+- SQLite database testing with 1,051,200 readings.
+- Composite indexing on `(station, date)`.
+- Query performance comparison with and without the index.
+- Production architecture recommendation.
 
-| Metric | Adyar | Guindy |
-|---|---:|---:|
-| Average PM2.5 | 48.0 | 95.0 |
-| Maximum PM10 | 90.0 | 140.0 |
-| Total readings | 4 | 3 |
+**Observed results:**
+- Total complaints: 50
+- Correct predictions against predefined labels: 50
+- Agreement with manual labels: 100%
+- Query time without index: 0.065486 seconds
+- Query time with index: 0.000011 seconds
 
-Total cleaned records: **7**
+The 100% agreement represents the tested sample only and should not be interpreted as real-world model accuracy.
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/khadrinathediga-prog/CSA08-192472296-Assignment5.git
+```
+
+Move into the project directory:
+
+```bash
+cd CSA08-192472296-Assignment5
+```
+
+Install required external libraries:
+
+```bash
+python3 -m pip install pandas matplotlib
+```
 
 ## Execution Commands
 
-Run these commands from the main project directory:
+Run commands from the project root directory.
+
+**Generate performance datasets:**
 
 ```bash
 python3 generate_data.py
+```
+
+**B1 – Cleaning pipeline:**
+
+```bash
 python3 Task06_B1/cleaning_pipeline.py
+```
+
+**B1 – Database analysis:**
+
+```bash
 python3 Task06_B1/database_analysis.py
+```
+
+**B1 – Visualisation:**
+
+```bash
 python3 Task06_B1/visualization.py
+```
+
+**B1 – Pandas comparison:**
+
+```bash
 python3 Task06_B1/pandas_comparison.py
 ```
 
-## Conclusion
+**B2 – Adversarial testing:**
 
-The B1 implementation demonstrates data cleaning, data normalisation, SQLite database operations, SQL aggregation, data visualisation, and performance comparison between Python CSV and Pandas.
+```bash
+python3 Task07_B2/adversarial_tests.py
+```
 
-Further tasks will be documented as their implementations are completed.
+**B2 – Sentiment analysis:**
+
+```bash
+python3 Task07_B2/sentiment_analysis.py
+```
+
+**B2 – Parameterised SQL:**
+
+```bash
+python3 Task07_B2/parameterized_sql.py
+```
+
+**B3 – Performance comparison:**
+
+```bash
+python3 Task08_B3/performance_comparison.py
+```
+
+**B3 – Profiling:**
+
+```bash
+python3 Task08_B3/profiling.py
+```
+
+**B4 – Final engineering investigation:**
+
+```bash
+python3 Task09_B4/final_engineering.py
+```
+
+## Screenshots and Evidence
+
+Screenshots of program execution, cleaning results, SQL analysis, charts, adversarial testing, sentiment analysis, performance benchmarks and profiling are stored in the corresponding task folders.
+
+## Engineering Conclusion
+
+The project demonstrates an end-to-end workflow for processing air-quality data, cleaning inconsistent records, performing database analysis, visualising pollution trends and evaluating processing performance.
+
+Pandas provided efficient aggregation for the tested datasets. SQLite supported structured storage and indexed queries. Parameterised SQL improved database security.
+
+For a larger production monitoring network, the recommended architecture combines scheduled data ingestion, automated validation,
