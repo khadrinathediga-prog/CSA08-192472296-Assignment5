@@ -1,0 +1,5 @@
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+Task09_B4/output/*.db
